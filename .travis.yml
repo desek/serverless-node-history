@@ -9,6 +9,7 @@ branches:
   only:
     - master
     - develop
+script: true
 deploy:
   provider: firebase
   token:
