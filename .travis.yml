@@ -5,10 +5,6 @@ language: node_js
 node_js:
   - "node"
   - $FIREBASE_NODE_VER
-branches:
-  only:
-    - master
-    - develop
 script: true
 deploy:
   - provider: firebase
