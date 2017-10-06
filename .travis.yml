@@ -4,20 +4,13 @@ dist: trusty
 language: node_js
 node_js:
   - "node"
-  - $FIREBASE_NODE_VER
+  - "6"
+branches:
+  only:
+    - master
+    - develop
 script: true
 deploy:
-  - provider: firebase
-    skip_cleanup: true
-    token:
-      secure: $FIREBASE_TOKEN
-    on:
-      branch: master
-  - provider: firebase
-    skip_cleanup: true
-    token:
-      secure: $FIREBASE_TOKEN_DEV
-    on:
-      branch: develop
-      condition: $FIREBASE_DEV_DEPLOY = "true"
-      node: $FIREBASE_NODE_VER
+  provider: firebase
+  token:
+    secure: $FIREBASE_TOKEN
