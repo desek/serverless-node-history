@@ -1,0 +1,16 @@
+#.travis.yml
+sudo: false
+dist: trusty
+language: node_js
+node_js:
+  - "node"
+  - "6"
+branches:
+  only:
+    - master
+    - develop
+script: true
+deploy:
+  provider: firebase
+  token:
+    secure: $FIREBASE_TOKEN
