@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  "node"
+  "6"
+branches:
+  only:
+    - master
+    - develop
+deploy:
+  provider: firebase
+  token:
+    secure: $FIREBASE_TOKEN
