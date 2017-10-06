@@ -12,11 +12,9 @@ deploy:
       secure: $FIREBASE_TOKEN
     on:
       branch: master
-      node: $FIREBASE_NODE_VER
   - provider: firebase
     token:
       secure: $FIREBASE_TOKEN_DEV
     on:
       branch: develop
-      node: $FIREBASE_NODE_VER
       condition: $FIREBASE_DEV_DEPLOY = true
