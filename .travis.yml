@@ -23,7 +23,7 @@ deploy:
       branch: master
   - provider: script
     skip_cleanup: true
-    script: firebase deploy --project $FIREBASE_PROJECT --token $FIREBASE_TOKEN --non-interactive
+    script: firebase deploy --project $FIREBASE_DEV_PROJECT --token $FIREBASE_DEV_TOKEN --non-interactive
     on:
       all_branches: true
       condition: $TRAVIS_BRANCH != "master" && $FIREBASE_DEV_DEPLOY = "true" && $TRAVIS_NODE_VERSION = $FIREBASE_NODE_VER
