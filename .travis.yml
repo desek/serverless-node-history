@@ -24,4 +24,3 @@ deploy:
     on:
       all_branches: true
       condition: $TRAVIS_BRANCH != "master" && $FIREBASE_DEV_DEPLOY = "true"
-      node: $FIREBASE_NODE_VER
