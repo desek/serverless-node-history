@@ -6,6 +6,10 @@ node_js:
   - "node"
   - $FIREBASE_NODE_VER
 script: true
+cache:
+    npm: true
+    directories:
+        - functions/node_modules
 deploy:
   - provider: firebase
     skip_cleanup: true
@@ -16,8 +20,8 @@ deploy:
   - provider: firebase
     skip_cleanup: true
     token:
-      secure: $FIREBASE_TOKEN_DEV
+      secure: $FIREBASE_TOKEN
     on:
-      branch: develop
-      condition: $FIREBASE_DEV_DEPLOY = "true"
+      all_branches: true
+      condition: $TRAVIS_BRANCH != "master" && $FIREBASE_DEV_DEPLOY = "true"
       node: $FIREBASE_NODE_VER
