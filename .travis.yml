@@ -5,11 +5,16 @@ language: node_js
 node_js:
   - "node"
   - $FIREBASE_NODE_VER
+install:
+  - cd $TRAVIS_BUILD_DIR/functions
+  - npm install
 script: true
 cache:
     npm: true
     directories:
         - functions/node_modules
+before_deploy:
+  - npm install -g firebase-tools
 deploy:
   - provider: firebase
     skip_cleanup: true
@@ -17,10 +22,9 @@ deploy:
       secure: $FIREBASE_TOKEN
     on:
       branch: master
-  - provider: firebase
+  - provider: script
     skip_cleanup: true
-    token:
-      secure: $FIREBASE_TOKEN
+    script: firebase deploy --token $FIREBASE_TOKEN --non-interactive
     on:
       all_branches: true
-      condition: $TRAVIS_BRANCH != "master" && $FIREBASE_DEV_DEPLOY = "true"
+      condition: $TRAVIS_BRANCH != "master" && $FIREBASE_DEV_DEPLOY = "true" && $TRAVIS_NODE_VERSION = $FIREBASE_NODE_VER
