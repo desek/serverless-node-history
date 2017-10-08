@@ -10,5 +10,14 @@
   //     ]
   //   }
   // ]
-  "indexes": []
+  "indexes": [
+    {
+      "collectionId": "results",
+      "fields": [
+        { "fieldpath": "datetime", "mode": "DESCENDING" }
+        { "fieldpath": "timer", "mode": "ASCENDING" }
+        { "fieldpath": "request", "mode": "DESCENDING" }
+      ]
+    }
+  ]
 }
